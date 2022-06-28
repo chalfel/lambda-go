@@ -15,4 +15,4 @@ services:
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./bin:path/to/code"
+      - "./bin:/home/caiofelix/Projects/pocs/lambda-go/bin"
