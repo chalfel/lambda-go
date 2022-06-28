@@ -1,0 +1,26 @@
+service: go-lambda
+provider:
+  name: aws
+  runtime: go1.x
+  region: us-east-1
+  stage: local
+plugins:
+  - serverless-localstack
+custom:
+  localstack:
+    stages:
+      - local
+    host: http://localhost # optional - LocalStack host to connect to
+    autostart: true # optional - Start LocalStack in Docker on Serverless deploy
+    lambda:
+      mountCode: True
+functions:
+  user:
+    handler: bin/lambda-go
+    events:
+      - http:
+          path: users
+          method: get
+          cors: true
+resources:
+  Resources:
